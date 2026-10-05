@@ -66,7 +66,8 @@ kp = [("⚙", "Parts Analysed", f"{N:,}", "pcs", BLUE), ("◎", "Mean OD", f"{m:
 sec("Performance summary")
 st.markdown('<div class="kp">' + "".join(f'<div class="kr"><span class="ic" style="background:{c}22;color:{c}">{i}</span><em>{l}</em><b>{v}</b><u>{u}</u></div>' for i, l, v, u, c in kp) + "</div>", unsafe_allow_html=True)
 
-def uc(n, t, v, sub, pct, c): return f'<div class="u" style="--c:{c}"><i>USE CASE {n}</i><h3>{t}</h3><div class="v">{v}</div><p>{sub}</p><div class="bar"><div style="width:{max(2,min(100,pct)):.0f}%"></div></div></div>'
+def uc(n, t, v, sub, pct, c):
+    return f'<div class="u" style="--c:{c}"><h3>{t}</h3><div class="v">{v}</div><p>{sub}</p><div class="bar"><div style="width:{max(2,min(100,pct)):.0f}%"></div></div></div>'
 lv, d, fts = R["level"], R["drift"], R["fts"]; vr = (R["sig_now"] / R["sig_prev"] - 1) * 100
 na = int(R["anom"][-5000:].sum()); tone = lambda x, a, c: RED if x > c else AMBER if x > a else GREEN
 pph = 3600 / CYCLE_S; rh = R["rul"] / pph
